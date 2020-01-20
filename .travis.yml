@@ -9,14 +9,14 @@ script:
   - docker run amitdocker/aws npm test -- --coverage
 
 after_success:
-  - docker build -t amitdocker/multi-client ./client
-  - docker build -t amitdocker/multi-nginx ./nginx
-  - docker build -t amitdocker/multi-server ./server
-  - docker build -t amitdocker/multi-worker ./worker
+  - docker build -t fullstackamit/multi-client ./client
+  - docker build -t fullstackamit/multi-nginx ./nginx
+  - docker build -t fullstackamit/multi-server ./server
+  - docker build -t fullstackamit/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push amitdocker/multi-client
-  - docker push amitdocker/multi-nginx
-  - docker push amitdocker/multi-server
-  - docker push amitdocker/multi-worker
+  - docker push fullstackamit/multi-client
+  - docker push fullstackamit/multi-nginx
+  - docker push fullstackamit/multi-server
+  - docker push fullstackamit/multi-worker
