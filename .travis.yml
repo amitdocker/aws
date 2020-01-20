@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t phpnoida007/aws -f ./client/Dockerfile.dev ./client
+  - docker build -t amitdocker/aws -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run phpnoida007/aws npm test -- --coverage
+  - docker run amitdocker/aws npm test -- --coverage
 
 after_success:
-  - docker build -t phpnoida007/multi-client ./client
-  - docker build -t phpnoida007/multi-nginx ./nginx
-  - docker build -t phpnoida007/multi-server ./server
-  - docker build -t phpnoida007/multi-worker ./worker
+  - docker build -t amitdocker/multi-client ./client
+  - docker build -t amitdocker/multi-nginx ./nginx
+  - docker build -t amitdocker/multi-server ./server
+  - docker build -t amitdocker/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push phpnoida007/multi-client
-  - docker push phpnoida007/multi-nginx
-  - docker push phpnoida007/multi-server
-  - docker push phpnoida007/multi-worker
+  - docker push amitdocker/multi-client
+  - docker push amitdocker/multi-nginx
+  - docker push amitdocker/multi-server
+  - docker push amitdocker/multi-worker
