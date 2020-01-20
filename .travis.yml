@@ -23,6 +23,7 @@ after_success:
 
 deploy:
   edge: true
+  skip_cleanup: true
   provider: elasticbeanstalk
   region: ap-south-1
   app: multi-docker
